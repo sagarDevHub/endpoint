@@ -1,9 +1,16 @@
-import { Button } from '@/components/ui/button';
+export const instant = false;
 
-const Home = () => {
+import { currentUser } from '@/modules/authentication/actions';
+import UserButton from '@/modules/authentication/components/user-button';
+import { Suspense } from 'react';
+
+const Home = async () => {
+  const user = await currentUser();
   return (
-    <div className="bg-red-500">
-      <Button>Hello</Button>
+    <div className="flex h-screen flex-col items-center justify-center">
+      <Suspense fallback={<div className="h-10 w-10 rounded-full bg-muted animate-pulse" />}>
+        <UserButton user={user} />
+      </Suspense>
     </div>
   );
 };
