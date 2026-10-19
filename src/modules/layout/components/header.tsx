@@ -13,9 +13,9 @@ interface HeaderProps {
 
 const Header = ({ user }: HeaderProps) => {
   return (
-    <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border bg-background/95 px-4 backdrop-blur supports-backdrop-filter:bg-background/80">
+    <header className="sticky top-0 z-30 grid h-14 grid-cols-[1fr_auto_1fr] items-center gap-4 border-b border-border bg-background/95 px-4 backdrop-blur supports-backdrop-filter:bg-background/80">
       {/* Left — logo */}
-      <div className="flex shrink-0 items-center">
+      <div className="flex items-center justify-start">
         <button
           type="button"
           aria-label="Home"
@@ -25,15 +25,13 @@ const Header = ({ user }: HeaderProps) => {
         </button>
       </div>
 
-      {/* Center — search */}
-      <div className="flex flex-1 justify-center">
-        <div className="w-full max-w-md">
-          <SearchBar />
-        </div>
+      {/* Center — search (auto width, bounded by max-w) */}
+      <div className="w-full min-w-[300px] max-w-md">
+        <SearchBar />
       </div>
 
-      {/* Right — actions */}
-      <div className="flex shrink-0 items-center gap-2">
+      {/* Right — actions (push to the right edge) */}
+      <div className="flex items-center justify-end gap-2">
         <InviteMember />
         <Workspace />
         <UserButton user={user} size="sm" />
