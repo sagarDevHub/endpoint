@@ -137,7 +137,6 @@ const WorkspaceButton = () => {
 
   return (
     <Select
-      // ✅ Fix: Force it to be controlled from the first render by using an empty string fallback
       value={selectedWorkspace?.id || ''}
       onValueChange={id => {
         const ws = workspaces?.find(w => w.id === id);
@@ -149,7 +148,6 @@ const WorkspaceButton = () => {
     >
       <Hint label="Switch Workspace" side="bottom" align="end">
         <SelectTrigger
-          // ✅ UX Fix: Disable the trigger until a workspace is actually selected
           disabled={!selectedWorkspace}
           className={cn(
             'h-9 max-w-[200px] gap-2 border-border bg-transparent px-3 text-sm font-normal [&>svg:last-child]:hidden',
